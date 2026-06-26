@@ -1,0 +1,308 @@
+@import "tailwindcss";
+
+/* Breakpoint override must be in a plain @theme block (not inline) so
+   Tailwind generates the correct @media rules for all md: utilities. */
+@theme {
+  --breakpoint-md: 970px;
+}
+
+/* Global horizontal section padding — also exposed as --site-pad for use in
+   calc() values (e.g. carousel card widths and edge margins). */
+:root {
+  --site-pad: clamp(60px, 8.33vw, 200px);
+}
+
+@utility px-site {
+  padding-left: var(--site-pad);
+  padding-right: var(--site-pad);
+}
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #111111;
+  --color-brand-yellow: #ffae00;
+  --color-brand-green: #25a273;
+  --color-brand-teal: #009086;
+  --font-sans: var(--font-dm-sans);
+  --font-heading: var(--font-schibsted);
+}
+
+html {
+  /* Force light scrollbar in all browsers that respect color-scheme */
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile: rounded card. Desktop (≥970px): JS clip-path takes over. */
+.hero-section {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+@media (min-width: 970px) {
+  .hero-section {
+    border-radius: 0;
+    overflow: visible;
+  }
+}
+
+/* ── Hero: responsividade baseada em altura (desktop only) ───────────── */
+/* Unlayered → override sobre @layer utilities do Tailwind sem !important  */
+
+@media (min-width: 970px) and (max-height: 900px) {
+  .hero-content {
+    padding-top: clamp(190px, 22vh, 260px);
+    padding-bottom: clamp(32px, 4.2vh, 60px);
+  }
+  .hero-title-text {
+    font-size: clamp(1.875rem, 4.2vw, 3.5rem);
+    margin-bottom: 0.75rem;
+  }
+  .hero-subtitle-text {
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (min-width: 970px) and (max-height: 800px) {
+  .hero-content {
+    padding-top: clamp(156px, 20vh, 210px);
+    padding-bottom: clamp(24px, 3.5vh, 48px);
+  }
+  .hero-title-text {
+    font-size: clamp(1.625rem, 3.6vw, 2.875rem);
+    line-height: 1.08;
+    margin-bottom: 0.5rem;
+  }
+  .hero-subtitle-text {
+    font-size: clamp(0.8125rem, 1.1vw, 1.0625rem);
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 970px) and (max-height: 700px) {
+  .hero-content {
+    padding-top: clamp(148px, 20vh, 175px);
+    padding-bottom: clamp(18px, 2.8vh, 36px);
+  }
+  .hero-title-text {
+    font-size: clamp(1.375rem, 3vw, 2.375rem);
+    line-height: 1.05;
+    margin-bottom: 0.375rem;
+  }
+  .hero-subtitle-text {
+    font-size: clamp(0.75rem, 1vw, 0.9375rem);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Pre-JS fallback; JS overrides to border-radius:0 / overflow:visible once clip is applied */
+.meet-builders-image {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Pre-JS fallback; JS overrides with clip-path at all breakpoints. */
+.work-casa21-card {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Pre-JS fallback for member card image clip */
+.member-card-image {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Mobile: rounded card. Desktop (≥970px): JS clip-path takes over. */
+.community-benefits-section {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+@media (min-width: 970px) {
+  .community-benefits-section {
+    border-radius: 0;
+    overflow: visible;
+  }
+}
+
+/* Pre-JS fallback for footer clip — JS overrides with clip-path at all breakpoints */
+.footer-clip {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+@media (min-width: 970px) {
+  .footer-clip {
+    border-radius: 0;
+    overflow: visible;
+  }
+}
+
+/* Events carousel — hide native scrollbar on mobile */
+.events-carousel {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.events-carousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Pre-JS fallback for event card top image */
+.event-card-top {
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+}
+
+/* Pre-JS fallback for event card bottom white card */
+.event-card-bottom {
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+}
+
+/* Pre-JS fallback for members container */
+.members-container {
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* Mobile: circular photos; tablet/desktop: rounded rect */
+.members-photo {
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .members-photo {
+    border-radius: 16px;
+  }
+}
+
+/* ── Animations ─────────────────────────────────────────────────────────── */
+
+/* Hero entrance — CSS-driven, no IntersectionObserver */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-enter {
+  animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-enter-d1 { animation-delay: 0.18s; }
+.hero-enter-d2 { animation-delay: 0.36s; }
+.hero-enter-d3 { animation-delay: 0.54s; }
+
+/* Scroll indicator bounce */
+@keyframes bounce-y {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(7px); }
+}
+.scroll-bounce { animation: bounce-y 2s ease-in-out infinite; }
+
+/* Scroll-triggered fade-up */
+.anim-fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity   0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Triggered when the element itself or an ancestor .anim-wrap enters view */
+.anim-fade-up.in-view,
+.anim-wrap.in-view .anim-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay helpers */
+.anim-d1 { transition-delay: 80ms; }
+.anim-d2 { transition-delay: 160ms; }
+.anim-d3 { transition-delay: 240ms; }
+.anim-d4 { transition-delay: 320ms; }
+.anim-d5 { transition-delay: 400ms; }
+.anim-d6 { transition-delay: 480ms; }
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .anim-fade-up {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .scroll-bounce { animation: none !important; }
+}
+
+/* Scroll lock applied via JS classList when mobile nav is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ── Mobile nav overlay ─────────────────────────────────────── */
+
+.mobile-nav-overlay {
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.28s;
+}
+.mobile-nav-overlay.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.mobile-nav-item {
+  opacity: 0;
+  transform: translateX(-14px);
+  transition:
+    opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mobile-nav-overlay.open .mobile-nav-item { opacity: 1; transform: translateX(0); }
+.mobile-nav-overlay.open .mobile-nav-item:nth-child(1) { transition-delay: 60ms; }
+.mobile-nav-overlay.open .mobile-nav-item:nth-child(2) { transition-delay: 110ms; }
+.mobile-nav-overlay.open .mobile-nav-item:nth-child(3) { transition-delay: 160ms; }
+.mobile-nav-overlay.open .mobile-nav-item:nth-child(4) { transition-delay: 210ms; }
+.mobile-nav-overlay.open .mobile-nav-item:nth-child(5) { transition-delay: 260ms; }
+
+.mobile-nav-cta {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 310ms;
+}
+.mobile-nav-overlay.open .mobile-nav-cta { opacity: 1; transform: translateY(0); }
+
+.mobile-nav-lang {
+  opacity: 0;
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 370ms;
+}
+.mobile-nav-overlay.open .mobile-nav-lang { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-overlay,
+  .mobile-nav-item,
+  .mobile-nav-cta,
+  .mobile-nav-lang {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    transform: none !important;
+  }
+}
