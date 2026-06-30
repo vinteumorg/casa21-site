@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "700"],
 });
 
-const SITE_URL = "https://casa21.org";
+const SITE_URL = "https://casa21.vinteum.org";
 const SITE_TITLE = "Casa21 – The hackerhouse for Bitcoin builders in Brazil";
 const SITE_DESCRIPTION =
   "Casa21 is a community space in São Paulo dedicated to learning, hacking, and building on Bitcoin. Maintained by Vinteum.";
