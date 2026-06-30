@@ -38,7 +38,7 @@ export default function JoinSection() {
                 </p>
 
                 <div className="anim-fade-up anim-d2 flex flex-wrap justify-center gap-4 mt-8 md:mt-10">
-                    <Button variant="primary" href="https:/vinteum.org/contact" showArrow>
+                    <Button variant="primary" href="https://vinteum.org/contact" showArrow>
                         {t.becomeMember.ctaPrimary}
                     </Button>
                 </div>
