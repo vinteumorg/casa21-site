@@ -88,6 +88,11 @@ export const translations = {
         subtitle: "subscribe to Vinteum's newsletter and receive the latest news.",
         placeholder: "Type your email",
         finePrint: "By subscribing, you accept the Privacy Policy",
+        chooseLabel: "Choose your newsletters",
+        subscribeBtn: "Subscribe",
+        success: "You're subscribed!",
+        error: "Something went wrong. Try again.",
+        emailInvalid: "Please enter a valid email address.",
       },
       noCoinsHere: {
         title: "No Coins Here",
@@ -192,6 +197,11 @@ export const translations = {
         subtitle: "assine a newsletter da Vinteum e receba as últimas notícias.",
         placeholder: "Digite seu e-mail",
         finePrint: "Ao assinar, você aceita a Política de Privacidade",
+        chooseLabel: "Escolha suas newsletters",
+        subscribeBtn: "Assinar",
+        success: "Você está inscrito!",
+        error: "Algo deu errado. Tente novamente.",
+        emailInvalid: "Por favor, insira um e-mail válido.",
       },
       noCoinsHere: {
         title: "Sem Moedas Aqui",
