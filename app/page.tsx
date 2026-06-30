@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/sections/hero/HeroSection";
 import BuildersSection from "@/components/sections/builders/BuildersSection";
@@ -10,10 +9,9 @@ import CoworkingSection from "@/components/sections/coworking/CoworkingSection";
 import MembershipSection from "@/components/sections/membership/MembershipSection";
 import CommunityBenefitsSection from "@/components/sections/membership/CommunityBenefitsSection";
 import JoinSection from "@/components/sections/membership/JoinSection";
+import dynamic from "next/dynamic";
 
 const EventsSection = dynamic(() => import("@/components/sections/events/EventsSection"), { ssr: false });
-const Footer = dynamic(() => import("@/components/layout/Footer"));
-
 export default function Home() {
   const pillRef = useRef<HTMLElement | null>(null);
 
@@ -28,7 +26,6 @@ export default function Home() {
       <CommunityBenefitsSection />
       <JoinSection />
       <EventsSection />
-      <Footer />
     </main>
   );
 }
