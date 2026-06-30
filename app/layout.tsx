@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Schibsted_Grotesk, DM_Sans } from "next/font/google";
 import { LanguageProvider } from "@/lib/LanguageContext";
+import Footer from "@/components/layout/Footer";
+import { getNewsletters } from "@/lib/ghost/admin";
 import "./globals.css";
 
 const schibstedGrotesk = Schibsted_Grotesk({
@@ -42,18 +44,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const newsletters = await getNewsletters().catch(() => []);
+
   return (
     <html
       lang="en"
       className={`${schibstedGrotesk.variable} ${dmSans.variable}`}
     >
       <body>
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          {children}
+          <Footer newsletters={newsletters} />
+        </LanguageProvider>
       </body>
     </html>
   );
