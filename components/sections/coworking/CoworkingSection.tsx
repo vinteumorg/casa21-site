@@ -156,13 +156,6 @@ export default function CoworkingSection() {
           }}
         >
           {t.workCasa21.footerText}{" "}
-          <a
-            href="mailto:info@vinteum.org"
-            style={{ color: "#25A273" }}
-            className="hover:underline"
-          >
-            {t.workCasa21.footerLink}
-          </a>
         </p>
       </div>
     </section>

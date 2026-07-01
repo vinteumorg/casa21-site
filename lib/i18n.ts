@@ -44,7 +44,6 @@ export const translations = {
       card3: "Two references from people in the community who know your work",
       footerText:
         "We keep the space focused, respectful, and community-driven — and we're excited to welcome builders from all backgrounds and disciplines.",
-      footerLink: "Apply by emailing us at info@vinteum.org",
     },
     events: {
       sectionTitle: "Don't miss anything that's coming",
@@ -153,7 +152,6 @@ export const translations = {
       card3: "Duas referências de pessoas na comunidade que conhecem seu trabalho",
       footerText:
         "Mantemos o espaço focado, respeitoso e orientado pela comunidade — e estamos animados para receber builders de todas as origens e disciplinas.",
-      footerLink: "Candidate-se enviando um email para info@vinteum.org",
     },
     events: {
       sectionTitle: "Não perca nada do que está chegando",
