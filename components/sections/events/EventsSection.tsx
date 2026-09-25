@@ -14,7 +14,18 @@ const WIDE_BP = 1500;
 const GAP_DESKTOP = 24;
 const GAP_MOBILE = 16;
 
-const MANUAL_EVENTS: ApiEventItem[] = [];
+const MANUAL_EVENTS: ApiEventItem[] = [
+  {
+    category: "Casa21",
+    title: "Rust SP Nov/2026",
+    description:
+      "Encontro sazonal da comunidade Rust-SP na Casa21, com papo sobre casos de uso, features, dicas e formas de contribuir com a linguagem.",
+    location: "Av. Nhandu 848 - Planalto Paulista",
+    start_date: "2026-11-07T09:00:00-03:00",
+    image: "/events/gallery/rust-sp-nov-2026.png",
+    href: "https://luma.com/x2z9bbk9",
+  },
+];
 
 function sortByDate(items: ApiEventItem[]): ApiEventItem[] {
   return [...items].sort((a, b) => {
