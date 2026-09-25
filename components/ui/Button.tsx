@@ -11,6 +11,15 @@ interface ButtonProps {
     className?: string;
 }
 
+function Spinner() {
+    return (
+        <span className="loading-dots" aria-hidden>
+            <span />
+            <span />
+            <span />
+        </span>
+    );
+}
 const ArrowIcon = () => (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
         <path
@@ -47,6 +56,13 @@ export default function Button({
         </>
     );
 
+    const loadingContent = (
+        <>
+            <Spinner />
+            <span className="sr-only">Loading</span>
+        </>
+    );
+
     if (href) {
         return (
             <a href={href} className={cls}>
@@ -57,7 +73,7 @@ export default function Button({
 
     return (
         <button type="button" className={cls} onClick={onClick}>
-            {content}
+            {typeof children === "string" && children.trim() === "..." ? loadingContent : content}
         </button>
     );
 }

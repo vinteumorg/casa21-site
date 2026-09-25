@@ -210,6 +210,40 @@ body {
 }
 .scroll-bounce { animation: bounce-y 2s ease-in-out infinite; }
 
+/* Shimmer for image placeholders */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: shimmer 1.4s linear infinite;
+}
+
+/* Loading dots for buttons */
+@keyframes dots {
+  0% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(-4px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.4; }
+}
+.loading-dots {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.loading-dots > span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: currentColor;
+  border-radius: 9999px;
+  opacity: 0.4;
+}
+.loading-dots > span:nth-child(1) { animation: dots 1s ease-in-out infinite 0s; }
+.loading-dots > span:nth-child(2) { animation: dots 1s ease-in-out infinite 0.15s; }
+.loading-dots > span:nth-child(3) { animation: dots 1s ease-in-out infinite 0.3s; }
+
 /* Scroll-triggered fade-up */
 .anim-fade-up {
   opacity: 0;
