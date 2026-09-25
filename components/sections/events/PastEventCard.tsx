@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import type { EventItem } from "@/types/events";
 
 interface PastEventCardProps extends EventItem {
@@ -15,6 +16,7 @@ export default function PastEventCard({
   href,
   goToLabel,
 }: PastEventCardProps) {
+  const [loading, setLoading] = useState(true);
   return (
     <a
       href={href}
@@ -24,8 +26,17 @@ export default function PastEventCard({
       className="group flex gap-4 bg-white rounded-2xl p-3 transition-shadow hover:shadow-md"
       style={{ boxShadow: "0 2px 8px rgba(27,26,26,0.08)" }}
     >
-      <div className="relative flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden">
-        <Image src={image} alt={title} fill className="object-cover" />
+      <div className="relative flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden bg-gray-100">
+        {loading && (
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" />
+        )}
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className={`object-cover ${loading ? "opacity-0" : "opacity-100"}`}
+          onLoadingComplete={() => setLoading(false)}
+        />
       </div>
 
       <div className="flex flex-col justify-between flex-1 min-w-0 py-0.5">
