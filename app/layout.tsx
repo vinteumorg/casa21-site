@@ -59,8 +59,8 @@ export default async function RootLayout({
     >
       <body>
         <Script
-          src="https://analytics.seven.sx/script.js"
-          data-website-id="5719508b-5033-4664-81af-2bb007b59281"
+          src="https://analytics.vinteum.org/script.js"
+          data-website-id="636543c6-8f2a-40d5-9501-21be00d37aaa"
           strategy="afterInteractive"
         />
         <LanguageProvider>
